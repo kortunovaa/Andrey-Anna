@@ -590,7 +590,11 @@ body {
     font-family: 'Roscha';
     src: url('Roscha.ttf') format('truetype');
 }
-
+@font-face {
+    font-family: 'Wulkan Display';
+    src: url('WulkanDisplayItalic.ttf') format('truetype');
+    font-style: italic;
+}
 
 
 /* Принудительное применение шрифта Roscha для всех заголовков */
