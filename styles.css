@@ -599,3 +599,15 @@ body {
     font-style: italic;
     font-weight: normal;
 }
+
+/* Принудительное применение шрифта Roscha для всех заголовков */
+.countdown-label,
+.schedule-title,
+.dresscode-title,
+.details-title,
+.location-title,
+.wedding-title,
+.greeting-bold,
+.gifts-title {
+    font-family: 'Roscha', 'Playfair Display', 'Georgia', serif !important;
+}
