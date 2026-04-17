@@ -588,17 +588,10 @@ body {
 }
 @font-face {
     font-family: 'Roscha';
-    src: url('Roscha.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+    src: url('Roscha.ttf') format('truetype');
 }
 
-@font-face {
-    font-family: 'Wulkan Display';
-    src: url('WulkanDisplay-Italic.otf') format('opentype');
-    font-style: italic;
-    font-weight: normal;
-}
+
 
 /* Принудительное применение шрифта Roscha для всех заголовков */
 .countdown-label,
