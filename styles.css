@@ -1,0 +1,588 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #c0c1ae;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.invitation-card {
+    width: 393px;
+    height: 4021px;
+    position: relative;
+    background: #E0E1D1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+/* === ФИКСИРОВАННЫЙ ФОН: ФОТО + ЗЕЛЕНЫЙ ОВЕРЛЕЙ 72% === */
+.simple-bg {
+    position: fixed;  /* <-- главное изменение: фон не двигается при скролле */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Само фото */
+.simple-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://sun9-26.userapi.com/s/v1/ig2/Kz6f3okE7I4p2zoD7Anmwnq-HFnlr-LfZWf2XoGS6I8iKHlyKbnjhSdz_GMD8UnW6J56z18sTTuPXUOazgRjaXWc.jpg?quality=95&as=32x59,48x89,72x134,108x201,160x297,240x446,360x669,480x892,540x1004,640x1189,720x1338,1025x1905&from=bu&u=7wfiz46_UQ_yxRxg9FmwQLQm-esPd052NTBQzmz_mic&cs=1025x0');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Зелёный слой с прозрачностью 72% поверх фото */
+.simple-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(224, 225, 209, 0.72);
+    z-index: 2;
+}
+
+/* Убедимся, что контент карточки находится поверх фона */
+.invitation-card {
+    background: transparent; /* убираем старый фоновый цвет, чтобы был виден наш фиксированный фон */
+    z-index: 3;
+    position: relative; /* обязательно для корректного перекрытия */
+}
+
+/* === ЗАГОЛОВКИ (шрифт Roscha) === */
+.wedding-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -2px;
+    padding: 10px;
+    text-align: center;
+    color: #51503B;
+    font-size: 55px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    width: 100%;
+}
+
+.names-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 427px;
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 55px;
+    width: 100%;
+}
+
+/* ДАТА В ПРАВОМ ВЕРХНЕМ УГЛУ */
+.date-block {
+    position: absolute;
+    right: 20px;
+    top: 64px;
+    padding: 10px;
+    color: white;
+    font-size: 30px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    line-height: 55px;
+    text-align: right;
+    z-index: 3;
+}
+
+/* === ПРИВЕТСТВИЕ === */
+.greeting-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 700px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+.greeting-bold {
+    color: #51503B;
+    font-size: 37px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 15px;
+}
+.greeting-italic {
+    color: #51503B;
+    font-size: 20px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 1.3;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* === ФОТО КАЛЕНДАРЯ (увеличено и смещено ниже) === */
+.between-photo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1000px;
+    width: 360px;
+    z-index: 8;
+}
+
+/* === ПОЖЕЛАНИЯ ПО ПОДАРКАМ === */
+.gifts-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1380px;
+    width: 100%;
+    text-align: center;
+    color: #51503B;
+    font-size: 25px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    line-height: 20px;
+}
+.gifts-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1420px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: #51503B;
+    font-size: 15px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 20px;
+}
+
+/* === ТАЙМЕР === */
+.countdown-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1852px;
+    width: 100%;
+    text-align: center;
+    color: #51503B;
+    font-size: 25px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    line-height: 20px;
+}
+.countdown-box {
+    position: absolute;
+    left: 35px;
+    top: 1893px;
+    width: 323px;
+    height: 54px;
+    background: #989770;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+}
+.timer-item {
+    text-align: center;
+    background: rgba(255,255,240,0.2);
+    padding: 5px 8px;
+    border-radius: 12px;
+    min-width: 60px;
+}
+.timer-number {
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Roscha', monospace;
+    color: #fff3e0;
+    line-height: 1;
+}
+.timer-label {
+    font-size: 10px;
+    font-family: 'Roscha', sans-serif;
+    color: #f9f3d9;
+    text-transform: uppercase;
+}
+
+/* === РАСПИСАНИЕ ДНЯ === */
+.schedule-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2031px;
+    width: 100%;
+    text-align: center;
+    color: #51503B;
+    font-size: 25px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    line-height: 20px;
+}
+.schedule-box {
+    position: absolute;
+    left: 35px;
+    top: 2077px;
+    width: 323px;
+    height: 427px;
+    background: #989770;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 18px 4px 26px;
+}
+.schedule-text {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.time {
+    font-size: 25px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 20px;
+}
+.desc {
+    font-size: 15px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 20px;
+}
+
+/* === ДРЕСС-КОД === */
+.dresscode-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2566px;
+    width: 100%;
+    text-align: center;
+    color: #51503B;
+    font-size: 25px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    line-height: 20px;
+}
+
+.dresscode-desc {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2600px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 20px;
+}
+
+/* БЕЛАЯ ПЛАШКА ДЛЯ ЦВЕТОВЫХ ПЯТЕН */
+.color-palette-frame {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2680px;
+    width: 100%;
+    height: 37px;
+    padding: 5px 21px 4px 22px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ЦВЕТОВЫЕ ПЯТНА */
+.color-dot {
+    width: 67px;
+    height: 28px;
+    border-radius: 16px;
+    border: 1px #737373 solid;
+}
+.cd1 { background: #FFE5E4; }
+.cd2 { background: #EFBFBB; }
+.cd3 { background: #B08A81; }
+.cd4 { background: #8D8E7C; }
+.cd5 { background: #666956; }
+
+/* ФРЕЙМ С ФОТО 292x519 */
+.dresscode-frame {
+    position: absolute;
+    left: 50px;
+    top: 2740px;
+    width: 292px;
+    height: 519px;
+    border-radius: 37px;
+    overflow: hidden;
+    box-shadow: 5px 10px 4px rgba(0, 0, 0, 0.25);
+    background: #fff;
+}
+.dresscode-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* === ДЕТАЛИ === */
+.details-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 3340px;
+    width: 100%;
+    text-align: center;
+    color: #51503B;
+    font-size: 25px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    line-height: 20px;
+}
+.details-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 3380px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 20px;
+}
+
+/* === МЕСТО ПРОВЕДЕНИЯ === */
+.location-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 3548px;
+    width: 100%;
+    text-align: center;
+    color: #51503B;
+    font-size: 25px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    line-height: 20px;
+}
+.location-green-box {
+    position: absolute;
+    left: 25px;
+    top: 3598px;
+    width: 349px;
+    height: 170px;
+    background: #989770;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.location-photo {
+    width: 155px;
+    height: 157px;
+    border-radius: 13px;
+    object-fit: cover;
+}
+.location-map-link {
+    width: 161px;
+    height: 157px;
+    display: block;
+    border-radius: 13px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.location-map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.location-address {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 3794px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 20px;
+}
+
+/* === РАЗДЕЛИТЕЛЬНЫЕ ЛИНИИ === */
+.line {
+    position: absolute;
+    outline: 2px #F9FFD9 solid;
+}
+.l1 { width: 68px; height: 0; left: 308px; top: 2078px; }
+.l2 { width: 73px; height: 0; left: 22px; top: 2078px; }
+.l3 { width: 73px; height: 0; left: 22px; top: 2504px; }
+.l4 { width: 382px; height: 0; left: 6px; top: 3509px; }
+.l5 { width: 382px; height: 0; left: 6px; top: 3886px; }
+.l6 { width: 68px; height: 0; left: 308px; top: 2503px; }
+
+/* Вертикальная линия в правом нижнем углу (повернутая на 90 градусов) */
+/* Вертикальная линия в правом нижнем углу */
+.l7 {
+    position: absolute;
+    width: 0px;
+    height: 68px;
+    left: 356px;
+    top: 2455px;
+    border-left: 2px solid #F9FFD9;
+}
+.l8 {
+    position: absolute;
+    width: 0px;
+    height: 68px;
+    left: 36px;
+    top: 2455px;
+    border-left: 2px solid #F9FFD9;
+}
+.l9 {
+    position: absolute;
+    width: 0px;
+    height: 68px;
+    left: 356px;
+    top: 2060px;
+    border-left: 2px solid #F9FFD9;
+}
+.l10 {
+    position: absolute;
+    width: 0px;
+    height: 68px;
+    left: 36px;
+    top: 2060px;
+    border-left: 2px solid #F9FFD9;
+}
+/* === КОНТАКТЫ ДИЗАЙНЕРА (подняты выше) === */
+.designer-wrapper {
+    position: absolute;
+    width: 390px;
+    height: 51px;
+    left: 6px;
+    top: 3920px;
+    color:#51503B;
+}
+
+.designer-tg {
+    position: absolute;
+    width: 212.78px;
+    left: 141.85px;
+    top: 0px;
+    text-align: center;
+    color: black;
+    font-size: 13px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.designer-label {
+    position: absolute;
+    width: 212.78px;
+    left: 0px;
+    top: 18px;
+    text-align: center;
+    color: black;
+    font-size: 13px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.designer-vk {
+    position: absolute;
+    width: 212.78px;
+    left: 168.22px;
+    top: 31px;
+    text-align: center;
+    color: black;
+    font-size: 13px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.link {
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}
+
+/* === НОВЫЙ БЛОК С ФОТО АНДРЕЙ & АННА === */
+.hero-photo {
+    position: absolute;
+    left: 0px;
+    top: 67px;
+    width: 393px;
+    height: 555px;
+    object-fit: cover;
+    box-shadow: 0px 10px 9px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    left: 0px;
+    top: 67px;
+    width: 393px;
+    height: 555px;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.names-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 427px;
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    font-family: 'Roscha', 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 55px;
+    z-index: 3;
+}
+.details-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 3380px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-family: 'Wulkan Display', 'Roscha', 'Playfair Display', serif;
+    font-style: italic;
+    line-height: 20px;
+}
+
+/* Запрещаем перенос для "до 1 марта" */
+.details-text .no-wrap {
+    white-space: nowrap;
+}
